@@ -1,5 +1,11 @@
 class CohortController < ApplicationController
   def view
-    render json: "Hello world, you asked to view cohort with id #{params[:id]}"
+    @cohort = [{
+                id: params[:id],
+                name: 'March 2015',
+                individuals: [{ name: 'james'},
+                              { name: 'rich' }]
+              }]
+    render json: @cohort
   end
 end
