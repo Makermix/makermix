@@ -1,11 +1,6 @@
 class CohortController < ApplicationController
   def view
-    @cohort = [{
-                id: params[:id],
-                name: 'March 2015',
-                individuals: [{ name: 'james'},
-                              { name: 'rich' }]
-              }]
+    @cohort = Cohort.find(params[:id])
     render json: @cohort
   end
 end
