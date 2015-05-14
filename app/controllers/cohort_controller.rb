@@ -15,4 +15,8 @@ class CohortController < ApplicationController
       format.any  { head :not_found }
     end
   end
+
+  def list
+    render json: Cohort.all
+  end
 end

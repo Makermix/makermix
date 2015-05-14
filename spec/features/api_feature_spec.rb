@@ -22,6 +22,20 @@ feature 'api calls' do
       expect(JSON.parse(last_response.body)[0]['name']).to eq(cohort1.name)
       expect(JSON.parse(last_response.body)[1]['name']).to eq(cohort2.name)
     end
+<<<<<<< HEAD
+=======
+  end
+
+  context 'to the pair path' do
+
+    scenario 'returns the specified user\'s pair partner for the day' do
+      get '/pair/james'
+      expect(last_response.body).to eq('Milena')
+    end
+
+  end
+
+>>>>>>> d09e2aa20a5715023f93f54c7845c7ab19adf0cb
   end
 
   context 'to the pair path' do
