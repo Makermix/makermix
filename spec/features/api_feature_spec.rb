@@ -33,17 +33,6 @@ feature 'api calls' do
 
   end
 
-  end
-
-  # context 'making a post request with users to the database' do
-
-  #   scenario 'submit the requested json object' do
-  #     data = '{"name": "rich"}'
-  #     post "/users", JSON.parse(data)
-  #     expect(User.last.name).to have_content("rich")
-  #   end
-  # end
-
   context 'adding a pairing' do
 
     scenario 'submit the requested pairing' do
