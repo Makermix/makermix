@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # root to: "home#index"
   get 'cohorts/:id' => 'cohort#view'
   get 'cohorts' => 'cohort#list'
+  get 'pair/:name' => 'pairings#show'
 
   resources :users
   resources :pairings
