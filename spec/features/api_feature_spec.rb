@@ -23,7 +23,7 @@ feature 'api calls' do
       expect(JSON.parse(last_response.body)[1]['name']).to eq(cohort2.name)
     end
   end
-  
+
   # context 'making a post request with users to the database' do
   #
   #   scenario 'submit the requested json object' do
@@ -59,13 +59,27 @@ feature 'api calls' do
 
   context 'making a get request with pairings/new' do
 
-    scenario '' do
-      user1 = User.create(name: "rich")
-      user2 = User.create(name: "tomi")
+    scenario 'shuffles if the first request' do
+      user1 = User.new(name: "rich", email: "A")
+      user1.save(validate: false)
+      user2 = User.new(name: "tomi", email: "B")
+      user2.save(validate: false)
       id1 = user1.id
       id2 = user2.id
-      get 'pairings/new'
-      p last_response.body
+      get 'pair/rich'
+      expect(last_response.body).to eq(user2.to_json)
+    end
+
+    scenario 'returns the partner for subsequent requests' do
+      user1 = User.new(name: "rich", email: "A")
+      user1.save(validate: false)
+      user2 = User.new(name: "tomi", email: "B")
+      user2.save(validate: false)
+      id1 = user1.id
+      id2 = user2.id
+      get 'pair/rich'
+      get 'pair/tomi'
+      expect(last_response.body).to eq(user1.to_json)
     end
 
   end
