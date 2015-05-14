@@ -24,20 +24,11 @@ feature 'api calls' do
     end
   end
 
-  context 'to the pair path' do
-
-    scenario 'returns the specified user\'s pair partner for the day' do
-      get '/pair/james'
-      expect(last_response.body).to eq('Milena')
-    end
-
-  end
-
   context 'adding a pairing' do
 
     scenario 'submit the requested pairing' do
-      user1 = User.create(name: "rich")
-      user2 = User.create(name: "tomi")
+      user1 = User.create(name: "rich", email: "first@email.com")
+      user2 = User.create(name: "tomi", email: "second@email.com")
       id1 = user1.id
       id2 = user2.id
       postdata = [id1,id2]
@@ -48,4 +39,3 @@ feature 'api calls' do
   end
 
 end
-
