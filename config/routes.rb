@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   # root to: "home#index"
   get 'cohorts/:id' => 'cohort#view'
+  get 'cohorts' => 'cohort#list'
+
   resources :users
   resources :pairings
 

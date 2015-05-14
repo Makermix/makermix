@@ -30,6 +30,10 @@ module Makermix
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.action_dispatch.default_headers.merge!({
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Request-Method' => '*'
+        })
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
