@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  def new
+  end
+
   def create
     # p params
     # cohort =  Cohort.find()
