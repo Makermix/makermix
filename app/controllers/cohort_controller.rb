@@ -5,6 +5,7 @@ class CohortController < ApplicationController
       render json: @cohort.as_json({include: :users}), callback: params['callback']
     else
       render_404
+
     end
   end
 

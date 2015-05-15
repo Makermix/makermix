@@ -4,7 +4,7 @@ feature 'api calls' do
   context 'to the cohorts route' do
     scenario 'returns a cohort of users if given a cohort id' do
       cohort = Cohort.create(name: 'March 2015')
-      get "/cohorts/1"
+      get "/cohorts/#{cohort.id}"
       expect(JSON.parse(last_response.body)['name']).to eq('March 2015')
     end
 
@@ -31,19 +31,19 @@ feature 'api calls' do
   #   end
   # end
 
-  context 'adding a pairing' do
+  # context 'adding a pairing' do
 
-    scenario 'submit the requested pairing' do
-      user1 = User.create(name: "rich", email: "first@email.com")
-      user2 = User.create(name: "tomi", email: "second@email.com")
-      id1 = user1.id
-      id2 = user2.id
-      postdata = [id1,id2]
-      post "/pairings", pairing: JSON.generate(postdata)
-      expect(Pairing.last.first_person_id).to eq(id1)
-      expect(Pairing.last.second_person_id).to eq(id2)
-    end
-  end
+  #   scenario 'submit the requested pairing' do
+  #     user1 = User.create(name: "rich", email: "first@email.com")
+  #     user2 = User.create(name: "tomi", email: "second@email.com")
+  #     id1 = user1.id
+  #     id2 = user2.id
+  #     postdata = [id1,id2]
+  #     post "/pairings", pairing: JSON.generate(postdata)
+  #     expect(Pairing.last.first_person_id).to eq(id1)
+  #     expect(Pairing.last.second_person_id).to eq(id2)
+  #   end
+  # end
 
 #   context 'login in' do
 #
