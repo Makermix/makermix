@@ -3,11 +3,9 @@ require 'rails_helper'
 feature 'api calls' do
   context 'to the cohorts route' do
     scenario 'returns a cohort of users if given a cohort id' do
-      cohort = Cohort.create(name: "March 2015")
-      cohort.users.create(name: "James")
-      get "/cohorts/#{cohort.id}"
-      expect(JSON.parse(last_response.body)['id']).to eq(cohort.id)
-      expect(JSON.parse(last_response.body)['users'][0]['name']).to eq('James')
+      cohort = Cohort.create(name: 'March 2015')
+      get "/cohorts/1"
+      expect(JSON.parse(last_response.body)['name']).to eq('March 2015')
     end
 
     scenario 'returns 404 page if requested cohort does not exist' do
