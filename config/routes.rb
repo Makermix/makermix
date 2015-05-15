@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -6,6 +7,15 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   # root to: "home#index"
   get 'cohorts/:id' => 'cohort#view'
+  get 'cohorts' => 'cohort#list'
+  get 'pair/:name' => 'pairings#show'
+
+  resources :users
+  resources :pairings
+
+  root to: "users#new"
+  get "/auth/:provider/callback" => "sessions#create"
+  get "/signout" => "sessions#destroy", :as => :signout
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
